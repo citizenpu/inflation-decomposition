@@ -1,1 +1,1 @@
-# The decomposition follows Shapiro (2022) https://sites.google.com/site/adamshap/data-and-code , Redl (2023) https://www.imf.org/en/Publications/WP/Issues/2023/09/28/Monitoring-Demand-and-Supply-in-Asia-An-Industry-Level-Approach-539479 and builds upon Labadie's codes https://github.com/ptlabadie/InflationDecomposition
+
