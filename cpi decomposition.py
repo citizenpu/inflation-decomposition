@@ -10,6 +10,7 @@ import statsmodels.api as sm
 from statsmodels.tsa.api import VAR
 
 data = pd.read_excel('C:/Users/citiz/Downloads/CPI decomposition.xlsx')
+#原始数据来自wind
 data=data.iloc[4:data.shape[0]-2,:]
 data=data.rename(columns={"Name":"Date"})
 data=data.set_index("Date")
