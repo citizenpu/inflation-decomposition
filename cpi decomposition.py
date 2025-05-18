@@ -41,32 +41,6 @@ prices=datas[datas.columns[datas.columns.str.startswith('Current Prices')]].appl
 quantities=datas[datas.columns[datas.columns.str.startswith('Constant Prices')]].apply(pd.to_numeric, errors='coerce')
 ln_prices=prices.apply(lambda x: np.log(x))
 ln_quantities=quantities.apply(lambda x: np.log(x))
-
-# Import data and keep price values
-# data = pd.read_csv('C:/Users/Patrick/Documents/projects/InflationDecomposition/data/HFCE2000-2024.csv')
-# data['date'] = pd.to_datetime(data['REF_DATE'])
-# ln_prices=prices.apply(lambda x: np.log(x))
-# price_df = data.loc[data['Prices'] == 'Current prices']
-
-
-# Transform data into price index for each column, apply和transform不同之处在于apply可以聚合数据，但是transform不改变原始数据结构
-# date_mask = price_df['REF_DATE'] == '2017-01'
-# price_df['price'] = price_df.groupby('Estimates')['VALUE'].transform( lambda x: x / x[date_mask].iloc[0] * 100)
-# prices = price_df.pivot(index= 'date', columns = 'Estimates', values = 'price')
-# prices = prices.dropna(axis='columns')
-
-# prices.columns = prices.columns.values + '_p'
-# ln_prices = prices.apply(lambda x: np.log(x))
-
-# quantity_df = data.loc[data['Prices'] == '2017 constant prices']
-# date_mask = quantity_df['REF_DATE'] == '2017-01'
-# quantity_df['quantity'] = quantity_df.groupby('Estimates')['VALUE'].transform( lambda x: x / x[date_mask].iloc[0] * 100)
-# quantities = quantity_df.pivot(index= 'date', columns = 'Estimates', values = 'quantity')
-# quantities = quantities.dropna(axis='columns')
-# quantities.columns = quantities.columns.values + '_q'
-
-# ln_quantities = quantities.apply(lambda x: np.log(x))
-
 def rolling_var_regression(df):
 	resid_results = []
 	window = 0
@@ -79,8 +53,6 @@ def rolling_var_regression(df):
 		resid_results.append(label_residuals(residuals))
 		window = window + 1
 	return resid_results
-
-
 def label_residuals(df):
 	std_error_residuals = df.std()
 # Calculate the t-statistic for each residual by dividing the residuals by their standard error
